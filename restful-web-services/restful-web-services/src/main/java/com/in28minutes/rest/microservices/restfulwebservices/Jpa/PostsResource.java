@@ -5,10 +5,7 @@ import com.in28minutes.rest.microservices.restfulwebservices.user.User;
 import com.in28minutes.rest.microservices.restfulwebservices.user.UserNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -17,6 +14,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 
+@RestController
 public class PostsResource {
 
     private JpaUserRepository jpaUserRepository;
@@ -29,7 +27,7 @@ public class PostsResource {
 
 
     @PostMapping("/jpa/users/{id}/posts")
-    public ResponseEntity<Object> createPostForUser(@PathVariable Integer id, @Valid @RequestBody Posts posts){
+    public ResponseEntity<Object> createPostForUser(@PathVariable Integer id, @RequestBody Posts posts){
         Optional<User> user=jpaUserRepository.findById(id);
         if(user.isEmpty())
         {

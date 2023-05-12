@@ -1,5 +1,6 @@
 package com.in28minutes.rest.microservices.restfulwebservices.user;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -30,6 +31,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
+    @JsonManagedReference
     private List<Posts> posts;
     public User(Integer id, String name, LocalDate birthDate) {
         this.id = id;

@@ -1,5 +1,7 @@
 package com.in28minutes.rest.microservices.restfulwebservices.user;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import net.minidev.json.annotate.JsonIgnore;
 
@@ -15,6 +17,7 @@ public class Posts {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
+    @JsonBackReference
     private User user;
 
     public Integer getId() {
